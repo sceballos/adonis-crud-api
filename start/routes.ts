@@ -18,8 +18,13 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+export enum APIVersion {
+  V1 = 'v1',
+}
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+export enum APIRoutes {
+  User = 'user',
+}
+
+import './user'
+import './user/profile'
