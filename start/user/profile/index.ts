@@ -95,4 +95,6 @@ Route.group(() => {
    *
    */
   Route.patch(UserInfo.Password, 'User/UserProfileController.updatePassword')
-}).prefix(USER_PROFILE_API_PATH)
+})
+  .prefix(USER_PROFILE_API_PATH)
+  .middleware('JwtAuth')
