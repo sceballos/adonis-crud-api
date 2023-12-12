@@ -91,7 +91,7 @@ export default class UserManager {
    * @param userInfo: UpdatableInfo
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
-  public async UpdateUser(id: number, userInfo: UpdatableInfo): Promise<User | null> {
+  public static async UpdateUser(id: number, userInfo: UpdatableInfo): Promise<User | null> {
     const userToUpdate = await User.find(id)
 
     if (!userToUpdate) {
