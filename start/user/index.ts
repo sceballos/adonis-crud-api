@@ -75,5 +75,5 @@ Route.group(() => {
    * }
    *
    */
-  Route.delete('', 'User/UsersController.delete')
+  Route.delete('', 'User/UsersController.delete').middleware('JwtAuth')
 }).prefix(USER_API_PATH)
