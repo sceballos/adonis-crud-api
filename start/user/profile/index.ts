@@ -6,7 +6,6 @@ export const USER_PROFILE_API_PATH = `${USER_API_PATH}/${UserSubRoutes.Profile}`
 export enum UserInfo {
   Name = 'name',
   Email = 'email',
-  Password = 'password',
 }
 
 export enum UserParams {
