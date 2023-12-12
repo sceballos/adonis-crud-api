@@ -26,7 +26,7 @@ export default class UpdateUserPasswordValidator {
   public schema = schema.create({
     current_password: schema.string({}, [rules.minLength(8), rules.maxLength(512)]),
     new_password: schema.string({}, [rules.minLength(8), rules.maxLength(512)]),
-    new_password_repeat: schema.string({}, [rules.minLength(8), rules.maxLength(512)]),
+    new_password_repeat: schema.string({}),
   })
 
   /**
