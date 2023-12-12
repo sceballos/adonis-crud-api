@@ -83,7 +83,7 @@ test.group(`${CONTROLLER} | Endpoint : ${ENDPOINT}`, (group) => {
   {
     const newName = 'user'
     test(`${CONTROLLER} => ${ACTION} providing valid JWT token and invalid name parameter (short name).
-  Expects 200 OK `, async ({ client, assert }) => {
+  Expects 422 Unprocessable Entity with array containing errors.`, async ({ client, assert }) => {
       const response = await client
         .patch(ENDPOINT)
         .form({
@@ -116,7 +116,10 @@ test.group(`${CONTROLLER} | Endpoint : ${ENDPOINT}`, (group) => {
       const newName =
         'ajwkjntpvrfgdytqcyujuuadbppzwqvvwzbjucrpcbcbipdkavmiimpbnjnumyuppynanaxzwkbrfihczgdjweqxhzcxjbkkjvaewtehcrpgwkxfazzpjppiwuuazwzfg'
       test(`${CONTROLLER} => ${ACTION} providing valid JWT token and invalid name parameter (long name).
-  Expects 200 OK `, async ({ client, assert }) => {
+      Expects 422 Unprocessable Entity with array containing errors.`, async ({
+        client,
+        assert,
+      }) => {
         const response = await client
           .patch(ENDPOINT)
           .form({
