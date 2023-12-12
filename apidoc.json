@@ -1,0 +1,9 @@
+{
+    "name": "Users AdonisJS CRUD API ",
+    "version": "1.0.0",
+    "description": "",
+    "title": "Users API",
+    "url": "https://{api_host}/v1",
+    "order": ["User"]
+  }
+  
