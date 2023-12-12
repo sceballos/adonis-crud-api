@@ -1,12 +1,12 @@
 import { test } from '@japa/runner'
-import UsersController from 'App/Controllers/Http/User/UserProfileController'
 import UserManager from 'App/Managers/User/UserManager'
 import AuthManager from 'App/Managers/Auth/AuthManager'
 import { USER_PROFILE_API_PATH } from 'App/../start/user/profile'
+import UserProfileController from 'App/Controllers/Http/User/UserProfileController'
 
 const ID_PARAM = ':id'
 const ENDPOINT = `${USER_PROFILE_API_PATH}/${ID_PARAM}`
-const CONTROLLER = `${UsersController.name}`
+const CONTROLLER = `${UserProfileController.name}`
 const ACTION = `GET user profile`
 
 const ExistingUserInfo = {

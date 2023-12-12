@@ -1,11 +1,11 @@
 import { test } from '@japa/runner'
-import UsersController from 'App/Controllers/Http/User/UserProfileController'
 import UserManager from 'App/Managers/User/UserManager'
 import AuthManager from 'App/Managers/Auth/AuthManager'
 import { USER_PROFILE_API_PATH, UserInfo } from 'App/../start/user/profile'
+import UserProfileController from 'App/Controllers/Http/User/UserProfileController'
 
 const ENDPOINT = `${USER_PROFILE_API_PATH}/${UserInfo.Name}`
-const CONTROLLER = `${UsersController.name}`
+const CONTROLLER = `${UserProfileController.name}`
 const ACTION = `UPDATE user name`
 
 const ExistingUserInfo = {
