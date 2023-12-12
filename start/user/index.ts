@@ -6,6 +6,7 @@ export const USER_API_PATH = `${APIVersion.V1}/${APIRoutes.User}`
 export enum UserSubRoutes {
   Login = 'login',
   Profile = 'profile',
+  Settings = 'settings',
 }
 
 /**

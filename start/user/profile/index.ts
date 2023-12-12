@@ -71,30 +71,6 @@ Route.group(() => {
    *
    */
   Route.patch(UserInfo.Email, 'User/UserProfileController.updateEmail')
-
-  /**----------------------------------------------------------------------------------------
-   * @api {patch} /user/profile/password Update user password
-   * @apiUse JWTAuthorization
-   * @apiName user-update-password
-   * @apiGroup User
-   * @apiDescription Updates an existing user name
-   * @apiBody {string} current_password Current user's password
-   * @apiBody {string} new_password New user's password
-   * @apiBody {string} new_password_repeat Repetition of new user's password for confirmation purposes
-   * @apiParamExample {json} Request-Example:
-   * {
-   *   current_password: string,
-   *   new_password: string,
-   *   new_password_repeat: string
-   * }
-   * @apiSuccess {Json} Returns 200 OK
-   * @apiSuccessExample
-   * HTTP/1.1 200 OK
-   * {
-   * }
-   *
-   */
-  Route.patch(UserInfo.Password, 'User/UserProfileController.updatePassword')
 })
   .prefix(USER_PROFILE_API_PATH)
   .middleware('JwtAuth')

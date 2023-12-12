@@ -28,3 +28,4 @@ export enum APIRoutes {
 
 import './user'
 import './user/profile'
+import './user/settings'

@@ -1,12 +1,12 @@
 import { test } from '@japa/runner'
-import UsersController from 'App/Controllers/Http/User/UserProfileController'
 import UserManager from 'App/Managers/User/UserManager'
 import AuthManager from 'App/Managers/Auth/AuthManager'
-import { USER_PROFILE_API_PATH, UserInfo } from 'App/../start/user/profile'
 import CryptoManager from 'App/Managers/Auth/CryptoManager'
+import { USER_SETTINGS_API_PATH, UserSettings } from 'App/../start/user/settings'
+import UserSettingsController from 'App/Controllers/Http/User/UserSettingsController'
 
-const ENDPOINT = `${USER_PROFILE_API_PATH}/${UserInfo.Password}`
-const CONTROLLER = `${UsersController.name}`
+const ENDPOINT = `${USER_SETTINGS_API_PATH}/${UserSettings.Password}`
+const CONTROLLER = `${UserSettingsController.name}`
 const ACTION = `UPDATE user password`
 
 const ExistingUserInfo = {
