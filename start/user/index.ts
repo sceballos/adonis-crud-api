@@ -75,5 +75,5 @@ Route.group(() => {
    * }
    *
    */
-  Route.delete('', 'User/UsersController.create')
+  Route.delete('', 'User/UsersController.delete')
 }).prefix(USER_API_PATH)
