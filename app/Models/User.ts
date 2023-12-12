@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon'
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
-import crypto from 'crypto'
+import CryptoManager from 'App/Managers/Auth/CryptoManager'
 
 export default class User extends BaseModel {
   @beforeSave()
   public static async hashPassword(user: User) {
     if (user.$dirty.password) {
-      user.password = crypto.createHash('sha256').update(user.password).digest('hex')
+      user.password = CryptoManager.GenerateHash(user.password)
     }
   }
 

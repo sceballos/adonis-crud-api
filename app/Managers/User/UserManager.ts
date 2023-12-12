@@ -1,6 +1,6 @@
 import Database from '@ioc:Adonis/Lucid/Database'
 import User from 'App/Models/User'
-import crypto from 'crypto'
+import CryptoManager from '../Auth/CryptoManager'
 export interface UpdatableInfo {
   name?: string
   email?: string
@@ -17,7 +17,7 @@ export default class UserManager {
     return await User.query()
       .select()
       .where('email', email)
-      .andWhere('password', crypto.createHash('sha256').update(password).digest('hex'))
+      .andWhere('password', CryptoManager.GenerateHash(password))
       .first()
   }
 
