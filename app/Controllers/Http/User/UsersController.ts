@@ -1,10 +1,21 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import AuthManager from 'App/Managers/Auth/AuthManager'
 import UserManager from 'App/Managers/User/UserManager'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
+import LoginUserValidator from 'App/Validators/LoginUserValidator'
 
 export default class UsersController {
-  public async login({ response }: HttpContextContract) {
-    response.notImplemented()
+  public async login({ request, response }: HttpContextContract) {
+    const { email, password } = await request.validate(LoginUserValidator)
+
+    const user = await UserManager.Authenticate(email, password)
+
+    if (!user) {
+      return response.badRequest({ error: 'Invalid email or password ' })
+    }
+
+    const authToken = AuthManager.GenerateToken(user.id)
+    response.send({ token: authToken, username: user.name })
   }
 
   public async create({ request, response }: HttpContextContract) {
