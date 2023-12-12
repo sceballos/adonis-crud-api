@@ -7,10 +7,10 @@ export default class AuthManager {
    * @param payload: any
    * @returns string
    *----------------------------------------------------------------------------------------*/
-  public static GenerateToken(payload: any): string {
+  public static GenerateToken(payloadID: number): string {
     const token = jwt.sign(
       {
-        data: payload,
+        id: payloadID,
       },
       Env.get('APP_KEY')
     )
