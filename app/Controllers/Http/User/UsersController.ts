@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import AuthManager from 'App/Managers/Auth/AuthManager'
+import { AuthenticatedRequest } from 'App/Managers/Auth/Types'
 import UserManager from 'App/Managers/User/UserManager'
 import CreateUserValidator from 'App/Validators/CreateUserValidator'
 import LoginUserValidator from 'App/Validators/LoginUserValidator'
@@ -35,7 +36,13 @@ export default class UsersController {
     response.send(createResult)
   }
 
-  public async delete({ response }: HttpContextContract) {
-    response.notImplemented()
+  public async delete({ userId, response }: AuthenticatedRequest) {
+    const userDeletion = await UserManager.Delete(userId)
+
+    if (!userDeletion) {
+      return response.internalServerError()
+    }
+
+    response.send({})
   }
 }

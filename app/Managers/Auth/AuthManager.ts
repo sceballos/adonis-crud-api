@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import Env from '@ioc:Adonis/Core/Env'
+import { JWTPayload } from './Types'
 
 export default class AuthManager {
   /**----------------------------------------------------------------------------------------
@@ -19,13 +20,13 @@ export default class AuthManager {
 
   /**----------------------------------------------------------------------------------------
    * public static async VerifyToken
-   * @param payload: any
-   * @returns string | null
+   * @param token: string
+   * @returns any | null
    *----------------------------------------------------------------------------------------*/
-  public static VerifyToken(token: string): any | null {
+  public static VerifyToken(token: string): JWTPayload | null {
     try {
       const payload = jwt.verify(token, Env.get('APP_KEY'))
-      return payload
+      return payload as JWTPayload
     } catch (error) {
       console.error(error)
       return null
