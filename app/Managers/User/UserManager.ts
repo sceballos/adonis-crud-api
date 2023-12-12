@@ -1,6 +1,6 @@
 import Database from '@ioc:Adonis/Lucid/Database'
 import User from 'App/Models/User'
-
+import crypto from 'crypto'
 export interface UpdatableInfo {
   name?: string
   email?: string
@@ -8,6 +8,19 @@ export interface UpdatableInfo {
 }
 
 export default class UserManager {
+  /**----------------------------------------------------------------------------------------
+   * public static async Authenticate
+   * @param email: string
+   * @returns Promise<User | null>
+   *----------------------------------------------------------------------------------------*/
+  public static async Authenticate(email: string, password: string): Promise<User | null> {
+    return await User.query()
+      .select()
+      .where('email', email)
+      .andWhere('password', crypto.createHash('sha256').update(password).digest('hex'))
+      .first()
+  }
+
   /**----------------------------------------------------------------------------------------
    * public static async GetByEmail
    * @param email: string
