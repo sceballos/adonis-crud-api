@@ -31,6 +31,15 @@ export default class UserManager {
   }
 
   /**----------------------------------------------------------------------------------------
+   * public static async GetByID
+   * @param email: string
+   * @returns Promise<User | null>
+   *----------------------------------------------------------------------------------------*/
+  public static async GetByID(id: number): Promise<User | null> {
+    return await User.find(id)
+  }
+
+  /**----------------------------------------------------------------------------------------
    * public static async Create
    * @param name: string
    * @param email: string
