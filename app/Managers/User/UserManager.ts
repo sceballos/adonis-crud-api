@@ -125,4 +125,32 @@ export default class UserManager {
       return null
     }
   }
+
+  /**----------------------------------------------------------------------------------------
+   * public static async UpdateUserPassword
+   * @param id: number
+   * @param newPassword: string
+   * @returns Promise<User | null>
+   *----------------------------------------------------------------------------------------*/
+  public static async UpdateUserPassword(id: number, newPassword: string): Promise<User | null> {
+    const userToUpdate = await User.find(id)
+
+    if (!userToUpdate) {
+      return null
+    }
+
+    const trx = await Database.transaction()
+    userToUpdate.password = newPassword
+    userToUpdate.useTransaction(trx)
+
+    try {
+      await userToUpdate.save()
+      await trx.commit()
+      return userToUpdate
+    } catch (error) {
+      console.error(error)
+      await trx.rollback()
+      return null
+    }
+  }
 }
