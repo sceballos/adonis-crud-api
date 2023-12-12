@@ -9,6 +9,15 @@ export interface UpdatableInfo {
 
 export default class UserManager {
   /**----------------------------------------------------------------------------------------
+   * public static async GetByEmail
+   * @param email: string
+   * @returns Promise<User | null>
+   *----------------------------------------------------------------------------------------*/
+  public static async GetByEmail(email: string): Promise<User | null> {
+    return await User.findBy('email', email)
+  }
+
+  /**----------------------------------------------------------------------------------------
    * public static async Create
    * @param name: string
    * @param email: string
