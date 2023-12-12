@@ -4,8 +4,24 @@ import UpdateUserEmailValidator from 'App/Validators/UserProfile/UpdateUserEmail
 import UpdateUserNameValidator from 'App/Validators/UserProfile/UpdateUserNameValidator'
 
 export default class UsersController {
-  public async getUser({ response }: AuthenticatedRequest) {
-    response.notImplemented()
+  public async getUser({ params, response }: AuthenticatedRequest) {
+    if (!params.id) {
+      return response.badRequest({ error: 'User id not provided.' })
+    }
+
+    if (isNaN(Number(params.id))) {
+      return response.badRequest({ error: 'Invalid user id provided.' })
+    }
+    const user = await UserManager.GetByID(params.id)
+
+    if (!user) {
+      return response.badRequest({ error: 'User not found.' })
+    }
+
+    response.send({
+      username: user.name,
+      email: user.email,
+    })
   }
 
   public async updateName({ request, response, userId }: AuthenticatedRequest) {
