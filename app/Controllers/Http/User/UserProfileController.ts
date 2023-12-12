@@ -1,5 +1,6 @@
 import { AuthenticatedRequest } from 'App/Managers/Auth/Types'
 import UserManager from 'App/Managers/User/UserManager'
+import UpdateUserEmailValidator from 'App/Validators/UserProfile/UpdateUserEmailValidator'
 import UpdateUserNameValidator from 'App/Validators/UserProfile/UpdateUserNameValidator'
 
 export default class UsersController {
@@ -19,8 +20,16 @@ export default class UsersController {
     response.send({})
   }
 
-  public async updateEmail({ response }: AuthenticatedRequest) {
-    response.notImplemented()
+  public async updateEmail({ request, response, userId }: AuthenticatedRequest) {
+    const { email } = await request.validate(UpdateUserEmailValidator)
+
+    const updatedUser = await UserManager.UpdateUser(userId, { email: email })
+
+    if (!updatedUser) {
+      return response.internalServerError()
+    }
+
+    response.send({})
   }
 
   public async updatePassword({ response }: AuthenticatedRequest) {
