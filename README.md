@@ -67,7 +67,7 @@ Once the API is running you will be able to access it at http://127.0.0.1:3333 (
 
 ### Create a `.env` file
 
-If you want to run the project for local development run : 
+If you want to run the project for local development you will need a `.env` file : 
 ```bash
 #For local development
 cp .env.example.local .env
@@ -98,7 +98,6 @@ docker pull postgres && docker run --name mainPostgres -p 5432:5432 -e POSTGRES_
 ```bash
 node ace test
 ```
-
 
 ### Run development server
 
