@@ -2,7 +2,7 @@
 
 # Overview
 
-Simple CRUD API made with AdonisJS.
+Simple CRUD API made with [AdonisJS](https://adonisjs.com/).
 
 # Prerequisites
 
