@@ -6,6 +6,7 @@ export default class AuthManager {
   /**----------------------------------------------------------------------------------------
    * public static async GenerateToken
    * @param payload: any
+   * @description Generates and returns a JWT token string using payload provided.
    * @returns string
    *----------------------------------------------------------------------------------------*/
   public static GenerateToken(payloadID: number): string {
@@ -21,7 +22,8 @@ export default class AuthManager {
   /**----------------------------------------------------------------------------------------
    * public static async VerifyToken
    * @param token: string
-   * @returns any | null
+   * @description Verifies a JWT token string. Returns null if verification fails.
+   * @returns JWTPayload | null
    *----------------------------------------------------------------------------------------*/
   public static VerifyToken(token: string): JWTPayload | null {
     try {
