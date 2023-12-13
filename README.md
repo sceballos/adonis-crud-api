@@ -90,15 +90,16 @@ npm i
 docker pull postgres && docker run --name mainPostgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -d postgres
 ```
 
+### Run tests
+
+```bash
+node ace test
+```
+
+
 ### Run development server
 
 ```bash
 node ace serve --watch
 ```
 Once the API is running you will be able to access it at http://127.0.0.1:3333 (or a different port if `PORT` environment variable was modified in the `.env` file).
-
-### Run tests
-
-```bash
-node ace test
-```
