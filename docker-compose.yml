@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   postgres:
+    platform: linux/amd64
     image: postgres:latest
     container_name: ${POSTGRES_CONTAINER_NAME}
     environment:
@@ -15,6 +16,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   nodejs-api:
+    platform: linux/amd64
     image: node:18.13.0
     container_name: ${API_CONTAINER_NAME}
     working_dir: /app
@@ -31,7 +33,7 @@ services:
       PG_DB_NAME: ${PG_DB_NAME}
     depends_on:
       - postgres
-    command: sh -c "node ace migration:run && node ace test && node ace serve"
+    command: sh -c "npm install rimraf -g && rimraf node_modules && npm install && node ace migration:run && node ace test && node ace serve"
 
 volumes:
   postgres-data:
