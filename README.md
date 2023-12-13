@@ -18,14 +18,22 @@ Docker version 24.0.6
 ```
 
 # Recommended
-Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+Install and run [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 # How to get started
 
 Open a terminal (or PowerShell terminal if you are on Windows) and clone this repository :
 
+**UNIX like systems***
 ```bash
 git clone https://github.com/sceballos/adonis-crud-api.git && cd adonis-crud-api
+```
+**Windows PowerShell (run the commands separately)***
+```bash
+#run this first
+git clone https://github.com/sceballos/adonis-crud-api.git 
+#run this second
+cd adonis-crud-api
 ```
 
 ## Running project using docker-compose
