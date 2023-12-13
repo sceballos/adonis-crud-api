@@ -93,6 +93,12 @@ npm i
 docker pull postgres && docker run --name mainPostgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -d postgres
 ```
 
+### Run Database Migrations
+
+```bash
+node ace migration:run
+```
+
 ### Run tests
 
 ```bash
