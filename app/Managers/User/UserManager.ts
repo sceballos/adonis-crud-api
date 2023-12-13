@@ -4,13 +4,14 @@ import CryptoManager from '../Auth/CryptoManager'
 export interface UpdatableInfo {
   name?: string
   email?: string
-  password?: string
 }
 
 export default class UserManager {
   /**----------------------------------------------------------------------------------------
    * public static async Authenticate
    * @param email: string
+   * @param password: string
+   * @description Verifies that email and password are correct during authentication phase.
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async Authenticate(email: string, password: string): Promise<User | null> {
@@ -24,6 +25,7 @@ export default class UserManager {
   /**----------------------------------------------------------------------------------------
    * public static async GetByEmail
    * @param email: string
+   * @description Returns a User from DB identified by email. Returns null if user doesn't exists
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async GetByEmail(email: string): Promise<User | null> {
@@ -32,7 +34,8 @@ export default class UserManager {
 
   /**----------------------------------------------------------------------------------------
    * public static async GetByID
-   * @param email: string
+   * @param id: number
+   * @description Returns a User from DB identified by ID. Returns null if user doesn't exists
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async GetByID(id: number): Promise<User | null> {
@@ -44,6 +47,7 @@ export default class UserManager {
    * @param name: string
    * @param email: string
    * @param password: string
+   * @description Creates a User using passed parameters in DB and returns it. Returns null if creation fails
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async Create(name: string, email: string, password: string): Promise<User | null> {
@@ -71,6 +75,7 @@ export default class UserManager {
   /**----------------------------------------------------------------------------------------
    * public static async Delete
    * @param id: number
+   * @description Deletes a User from DB using ID. Returns null if deletion fails
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async Delete(id: number): Promise<User | null> {
@@ -98,6 +103,7 @@ export default class UserManager {
    * public static async UpdateUser
    * @param id: number
    * @param userInfo: UpdatableInfo
+   * @description Updates a User info (name, email) in DB using passed parameters. Returns null if update fails
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async UpdateUser(id: number, userInfo: UpdatableInfo): Promise<User | null> {
@@ -130,6 +136,7 @@ export default class UserManager {
    * public static async UpdateUserPassword
    * @param id: number
    * @param newPassword: string
+   * @description Updates a User password in DB using passed parameters. Returns null if update fails
    * @returns Promise<User | null>
    *----------------------------------------------------------------------------------------*/
   public static async UpdateUserPassword(id: number, newPassword: string): Promise<User | null> {
