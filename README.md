@@ -4,6 +4,9 @@
 
 Simple CRUD API made with [AdonisJS](https://adonisjs.com/).
 
+# API Endpoints Documentation
+https://sceballos.github.io/adonis-crud-api/
+
 # Prerequisites
 
 ```bash
